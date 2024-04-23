@@ -1,0 +1,37 @@
+digraph Tree {
+node [shape=box, style="filled", color="black", fontname="helvetica"] ;
+edge [fontname="helvetica"] ;
+0 [label="TVOC[ppb] <= 217.5\ngini = 0.5\nsamples = 66260\nvalue = [33130, 33130]\nclass = 0", fillcolor="#ffffff"] ;
+1 [label="Raw H2 <= 13215.5\ngini = 0.239\nsamples = 36433\nvalue = [31381, 5052]\nclass = 0", fillcolor="#e99559"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+2 [label="Raw H2 <= 13142.5\ngini = 0.104\nsamples = 32817\nvalue = [31011, 1806]\nclass = 0", fillcolor="#e78845"] ;
+1 -> 2 ;
+3 [label="TVOC[ppb] <= 209.5\ngini = 0.004\nsamples = 26200\nvalue = [26142, 58]\nclass = 0", fillcolor="#e58139"] ;
+2 -> 3 ;
+4 [label="TVOC[ppb] <= 207.5\ngini = 0.001\nsamples = 25889\nvalue = [25881, 8]\nclass = 0", fillcolor="#e58139"] ;
+3 -> 4 ;
+5 [label="gini = 0.0\nsamples = 25824\nvalue = [25820, 4]\nclass = 0", fillcolor="#e58139"] ;
+4 -> 5 ;
+6 [label="gini = 0.116\nsamples = 65\nvalue = [61, 4]\nclass = 0", fillcolor="#e78946"] ;
+4 -> 6 ;
+7 [label="gini = 0.27\nsamples = 311\nvalue = [261, 50]\nclass = 0", fillcolor="#ea995f"] ;
+3 -> 7 ;
+8 [label="UTC <= 1654764608.0\ngini = 0.389\nsamples = 6617\nvalue = [4869, 1748]\nclass = 0", fillcolor="#eeae80"] ;
+2 -> 8 ;
+9 [label="Temperature[C] <= 8.913\ngini = 0.257\nsamples = 5734\nvalue = [4867, 867]\nclass = 0", fillcolor="#ea975c"] ;
+8 -> 9 ;
+10 [label="gini = 0.0\nsamples = 864\nvalue = [0, 864]\nclass = 1", fillcolor="#399de5"] ;
+9 -> 10 ;
+11 [label="gini = 0.001\nsamples = 4870\nvalue = [4867, 3]\nclass = 0", fillcolor="#e58139"] ;
+9 -> 11 ;
+12 [label="gini = 0.005\nsamples = 883\nvalue = [2, 881]\nclass = 1", fillcolor="#399de5"] ;
+8 -> 12 ;
+13 [label="gini = 0.184\nsamples = 3616\nvalue = [370, 3246]\nclass = 1", fillcolor="#50a8e8"] ;
+1 -> 13 ;
+14 [label="Pressure[hPa] <= 938.06\ngini = 0.11\nsamples = 29827\nvalue = [1749, 28078]\nclass = 1", fillcolor="#45a3e7"] ;
+0 -> 14 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+15 [label="gini = 0.0\nsamples = 1749\nvalue = [1749, 0]\nclass = 0", fillcolor="#e58139"] ;
+14 -> 15 ;
+16 [label="gini = 0.0\nsamples = 28078\nvalue = [0, 28078]\nclass = 1", fillcolor="#399de5"] ;
+14 -> 16 ;
+}

@@ -1,0 +1,29 @@
+digraph Tree {
+node [shape=box, style="filled", color="black", fontname="helvetica"] ;
+edge [fontname="helvetica"] ;
+0 [label="Raw Ethanol <= 19571.5\ngini = 0.5\nsamples = 22260\nvalue = [11130, 11130]\nclass = 0", fillcolor="#ffffff"] ;
+1 [label="NC2.5 <= 0.023\ngini = 0.058\nsamples = 7943\nvalue = [239, 7704]\nclass = 1", fillcolor="#3fa0e6"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+2 [label="gini = 0.0\nsamples = 184\nvalue = [184, 0]\nclass = 0", fillcolor="#e58139"] ;
+1 -> 2 ;
+3 [label="Raw H2 <= 12566.0\ngini = 0.014\nsamples = 7759\nvalue = [55, 7704]\nclass = 1", fillcolor="#3a9ee5"] ;
+1 -> 3 ;
+4 [label="gini = 0.0\nsamples = 55\nvalue = [55, 0]\nclass = 0", fillcolor="#e58139"] ;
+3 -> 4 ;
+5 [label="gini = 0.0\nsamples = 7704\nvalue = [0, 7704]\nclass = 1", fillcolor="#399de5"] ;
+3 -> 5 ;
+6 [label="Raw H2 <= 13041.5\ngini = 0.364\nsamples = 14317\nvalue = [10891, 3426]\nclass = 0", fillcolor="#eda977"] ;
+0 -> 6 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+7 [label="eCO2[ppm] <= 496.0\ngini = 0.055\nsamples = 7343\nvalue = [7135, 208]\nclass = 0", fillcolor="#e6853f"] ;
+6 -> 7 ;
+8 [label="gini = 0.006\nsamples = 7146\nvalue = [7126, 20]\nclass = 0", fillcolor="#e5813a"] ;
+7 -> 8 ;
+9 [label="gini = 0.087\nsamples = 197\nvalue = [9, 188]\nclass = 1", fillcolor="#42a2e6"] ;
+7 -> 9 ;
+10 [label="Temperature[C] <= 9.38\ngini = 0.497\nsamples = 6974\nvalue = [3756, 3218]\nclass = 0", fillcolor="#fbede3"] ;
+6 -> 10 ;
+11 [label="gini = 0.013\nsamples = 1632\nvalue = [11, 1621]\nclass = 1", fillcolor="#3a9ee5"] ;
+10 -> 11 ;
+12 [label="gini = 0.419\nsamples = 5342\nvalue = [3745, 1597]\nclass = 0", fillcolor="#f0b78d"] ;
+10 -> 12 ;
+}
