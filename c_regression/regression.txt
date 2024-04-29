@@ -1,0 +1,21 @@
+회귀
+
+- 타겟 데이터의 분포
+1. 첨도가 높으면: log1p
+2. PowerTransform (box-cox, yeo_johnson(default))
+
+* 주의: 음수나 0 값은 주의할 것
+
+- OLS (P-value, coef_, Durbin-Watson, R2)
+
+- VIF (5 또는 10 이상이면 제거)
+
+- 수치형을 기준으로 fit 진행
+- 이진 분류는 레이블 인코딩
+
+- 선형 회귀로 평가
+- 다행 회귀로 평가
+- 트리 회귀로 평가
+
+- test_size를 조정해서, feature와 target 중 어디를 업데이트 해야할 지 판단
+- 만약 test_size를 늘렸는데 점수가 떨어지면 과소적합이 발생한 것
