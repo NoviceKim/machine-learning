@@ -20,6 +20,8 @@
 이후 결측치와 중복 여부를 검사했지만, 데이터 세트에서는 해당 사항들이 발견되지 않음
   
 레이블 인코딩에 앞서 현재 타겟 데이터의 분포를 히스토그램으로 시각화
+
+<img src='../images/log_r01.png'>
   
 ---
   
@@ -45,7 +47,9 @@ def target_encoder(target):
 다만, 이 방식으로 인코딩 했을 때 데이터 타입이 수치형으로 바뀌지는 않기 때문에  
 astype(np.int8) 메서드로 타겟 데이터의 타입을 수치형으로 변환,  
 인코딩 후에는 아래와 같은 히스토그램을 시각화 할 수 있었음    
-  
+
+<img src='../images/log_r02.png'>
+
 ---
   
 ### 데이터 세트 분할
@@ -104,11 +108,13 @@ for i in range(15):
     print(pca.explained_variance_ratio_.sum())
     print('=' * 30)
 ```
+
+<img src='../images/log_r03.png'>
   
 위 코드의 출력 결과로 5차원으로 축소했을 때 보존률이 0.7에 가까운, 이상적인 수치를 보이는 것을 확인  
 하지만 그 전에, 차원 축소 이후 데이터의 분포를 산점도로 시각화하고 싶었기 때문에 우선 2차원으로 축소해서 결과를 확인함  
 
-
+<img src='../images/log_r04.png'>
 
 위의 시각화 결과를 통해, PCA 방식을 사용해서 2차원으로 축소하면 클래스 간 구분이 어렵다는 사실을 알 수 있었음  
 
@@ -231,6 +237,8 @@ def get_evaluation(y_test, prediction, classifier=None, X_test=None):
 get_evaluation(y_test.detach(), logistic_r(X_test) >= 0.5)
 ```
 
+<img src='../images/log_r05.png'>
+
 출력 결과, 모든 평가 지표가 약 0.79 전후를 기록함  
 
 ---
@@ -257,6 +265,8 @@ prediction = logistic_r.predict(X_test)
 
 모델 훈련 뒤, 마찬가지로 평가 지표를 출력해 보았으며  
 이번에는 오차 행렬 시각화도 병행
+
+<img src='../images/log_r06.png'>
 
 ---
 
@@ -301,9 +311,11 @@ lda_test_df.loc[:, 'target'] = test_df['target']
 
 PCA 때와 동일한 코드로 Pytorch를 통한 로지스틱 회귀 진행
 
-LDA 방식으로 차원 축소했을 떄, 110,000번째 반복 이후로 W, b, loss가 더 이상 변하지 않는 것을 확인
+LDA 방식으로 차원 축소했을 때때, 110,000번째 반복 이후로 W, b, loss가 더 이상 변하지 않는 것을 확인
 
 그 후 get_evaluation() 함수로 평가 지표를 출력한 결과, 약 0.76 전후의 평가를 기록함
+
+<img src='../images/log_r07.png'>
 
 ---
 
@@ -330,6 +342,8 @@ prediction = logistic_r.predict(X_test)
 ```
 
 그 후 get_evaluation() 함수로 평가 지표를 출력해본 결과 약 0.78 정도의 평가를 기록함
+
+<img src='../images/log_r08.png'>
 
 ---
 
@@ -378,19 +392,84 @@ over_X_train, over_y_train = smote.fit_resample(X_train, y_train)
 ```
 
 그 후 LDA를 통해 1차원으로 축소한 뒤, LogisticRegression 모델을 통한 학습을 순서대로 거치도록 하는 파이프라인 생성  
-단, 이 과정에서 이슈가 발생했기 때문에 sklearn.pipeline의 FeatureUnion을 파이프라인 과정에 포함함
+feature들의 값이 모두 0 ~ 1 범위로 MinMaxScaler가 적용되어있었기 때문에, StandardScaler는 이 과정에서 사용하지 않음
 
+```
+```
 
+위 코드로 교차 검증 후 각 하이퍼 파라미터 조합 별 모델의 평가 순위를 출력해본 결과,  
+C는 0.005, penalty는 l2, solver는 liblinear를 사용했을 때 가장 우수한 모델이 나오는 것을 확인  
+  
+위의 하이퍼 파라미터로 튜닝해서 다시 학습한 뒤 오차 행렬을 시각화한 결과,  
+PCA 방식과 비슷한 0.78 정도가 측정
 
+<img src='../images/log_r09.png'>
+  
+<img src='../images/log_r10.png'>
+  
 ---
 
+#### 임계치 조정
+- 재현율이 0.8 이상이 되도록 임계치 낮추기
 
+본 모델이 기뢰를 더욱 예민하게 감지하는 것을 원했기 때문에,  
+임계치를 낮춤으로서 재현율을 향상시키기로 함
 
+과정에 앞서, 현재 모델의 Trade-off 그래프를 시각화
 
+<img src='../images/log_r11.png'>
 
+```
+# 정밀도 / 재현율이 변하는 지점의 임계치를 전부 출력
+_, _, thresholds = precision_recall_curve(y_test, lgr.predict_proba(X_test)[:, 1])
+thresholds
 
+# 재현율을 향상시키는 것이 목적이므로, 위의 임계치들 중 0.5 미만인 값만 담은 list 선언 
+recall_thresholds = [i for i in thresholds if i < 0.5]
 
+recall_thresholds
+```
 
+우선 위 코드로 Trade-off 에 변화가 생기는 지점의 임계치와  
+그 중 0.5 미만인 값들을 전부 출력한 뒤,
+
+```
+from sklearn.preprocessing import Binarizer
+
+# 전달받은 임계치 list(thresholds) 내 각각의 임계치에 따른 모델의 평가 지표 출력
+def get_evaluation_by_thresholds(y_test, prediction_proba_class1, thresholds):
+    for threshold in thresholds:
+        binarizer = Binarizer(threshold=threshold).fit(prediction_proba_class1) 
+        custom_prediction = binarizer.transform(prediction_proba_class1)
+        print('임계치:', threshold)
+        get_evaluation(y_test, custom_prediction)
+
+# 0.5 미만의 임계치에 따른 평가 지표 출력
+get_evaluation_by_thresholds(y_test, lgr.predict_proba(X_test)[:, 1].reshape(-1, 1), recall_thresholds)
+```
+
+위 함수를 선언 및 사용하여 0.5 미만의 임계치 별 평가 지표를 출력,  
+그 중 가장 우수한 재현율을 보였을 때의 임계치인 0.4782로 임계치를 재설정 후 평가를 진행함
+
+```
+# 임계치 조정 후 다시 예측
+binarizer = Binarizer(threshold=0.4782)
+recall_prediction = binarizer.fit_transform(lgr.predict_proba(X_test)[:, 1].reshape(-1, 1))
+```
+
+<img src='../images/log_r12.png'>
+  
+<img src='../images/log_r13.png'>
+
+---
+#### 학습 결과
+- 임계치를 낮춘 결과, 목표였던 0.8 이상의 재현율을 가진 로지스틱 회귀 모델을 얻을 수 있었다.
+
+- 이 과정에서 사용한 차원 축소 방식인 LDA는 입력으로 받은 데이터를  
+  최대한 클래스 별로 구분할 수 있는 방법을 찾는 방식이기 때문에 이번과 같은 분류 모델 프로젝트에 적합했다.
+
+- 또한 LinearRegression 모델 객체를 사용할 때 penalty와 C 파라미터를 통해 규제를 걸었으며,  
+  최적의 하이퍼 파라미터 값을 GridSearchCV를 통해 찾아서 적용시켰기 때문에 모델의 복잡도를 낮추는 방법으로 과적합도 해소했다.
 
 
 
