@@ -3,6 +3,7 @@
 - 기뢰란, 선박을 파괴할 목적으로 수중에 설치하는 폭탄을 의미  
 
 <img src='../../images/naval_mines.jpg'>
+<sub>출처: https://www.defencexp.com/naval-mines-the-biggest-threat-to-indian-waters/</sub>
 
 ---
   
