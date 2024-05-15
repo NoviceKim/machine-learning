@@ -21,7 +21,7 @@
   
 레이블 인코딩에 앞서 현재 타겟 데이터의 분포를 히스토그램으로 시각화
 
-<img src='../images/log_r01.png'>
+<img src='../../images/log_r01.png'>
   
 ---
   
@@ -48,7 +48,7 @@ def target_encoder(target):
 astype(np.int8) 메서드로 타겟 데이터의 타입을 수치형으로 변환,  
 인코딩 후에는 아래와 같은 히스토그램을 시각화 할 수 있었음    
 
-<img src='../images/log_r02.png'>
+<img src='../../images/log_r02.png'>
 
 ---
   
@@ -109,12 +109,12 @@ for i in range(15):
     print('=' * 30)
 ```
 
-<img src='../images/log_r03.png'>
+<img src='../../images/log_r03.png'>
   
 위 코드의 출력 결과로 5차원으로 축소했을 때 보존률이 0.7에 가까운, 이상적인 수치를 보이는 것을 확인  
 하지만 그 전에, 차원 축소 이후 데이터의 분포를 산점도로 시각화하고 싶었기 때문에 우선 2차원으로 축소해서 결과를 확인함  
 
-<img src='../images/log_r04.png'>
+<img src='../../images/log_r04.png'>
 
 위의 시각화 결과를 통해, PCA 방식을 사용해서 2차원으로 축소하면 클래스 간 구분이 어렵다는 사실을 알 수 있었음  
 
@@ -237,7 +237,7 @@ def get_evaluation(y_test, prediction, classifier=None, X_test=None):
 get_evaluation(y_test.detach(), logistic_r(X_test) >= 0.5)
 ```
 
-<img src='../images/log_r05.png'>
+<img src='../../images/log_r05.png'>
 
 출력 결과, 모든 평가 지표가 약 0.79 전후를 기록함  
 
@@ -266,7 +266,7 @@ prediction = logistic_r.predict(X_test)
 모델 훈련 뒤, 마찬가지로 평가 지표를 출력해 보았으며  
 이번에는 오차 행렬 시각화도 병행
 
-<img src='../images/log_r06.png'>
+<img src='../../images/log_r06.png'>
 
 ---
 
@@ -315,7 +315,7 @@ LDA 방식으로 차원 축소했을 때때, 110,000번째 반복 이후로 W, b
 
 그 후 get_evaluation() 함수로 평가 지표를 출력한 결과, 약 0.76 전후의 평가를 기록함
 
-<img src='../images/log_r07.png'>
+<img src='../../images/log_r07.png'>
 
 ---
 
@@ -343,7 +343,7 @@ prediction = logistic_r.predict(X_test)
 
 그 후 get_evaluation() 함수로 평가 지표를 출력해본 결과 약 0.78 정도의 평가를 기록함
 
-<img src='../images/log_r08.png'>
+<img src='../../images/log_r08.png'>
 
 ---
 
@@ -425,9 +425,9 @@ C는 0.005, penalty는 l2, solver는 liblinear를 사용했을 때 가장 우수
 위의 하이퍼 파라미터로 튜닝해서 다시 학습한 뒤 오차 행렬을 시각화한 결과,  
 PCA 방식과 비슷한 0.78 정도가 측정
 
-<img src='../images/log_r09.png'>
+<img src='../../images/log_r09.png'>
   
-<img src='../images/log_r10.png'>
+<img src='../../images/log_r10.png'>
   
 ---
 
@@ -439,7 +439,7 @@ PCA 방식과 비슷한 0.78 정도가 측정
 
 과정에 앞서, 현재 모델의 Trade-off 그래프를 시각화
 
-<img src='../images/log_r11.png'>
+<img src='../../images/log_r11.png'>
 
 ```
 # 정밀도 / 재현율이 변하는 지점의 임계치를 전부 출력
@@ -479,9 +479,9 @@ binarizer = Binarizer(threshold=0.4782)
 recall_prediction = binarizer.fit_transform(lgr.predict_proba(X_test)[:, 1].reshape(-1, 1))
 ```
 
-<img src='../images/log_r12.png'>
+<img src='../../images/log_r12.png'>
   
-<img src='../images/log_r13.png'>
+<img src='../../images/log_r13.png'>
 
 ---
 #### 학습 결과
@@ -492,21 +492,4 @@ recall_prediction = binarizer.fit_transform(lgr.predict_proba(X_test)[:, 1].resh
 
 - 또한 LinearRegression 모델 객체를 사용할 때 penalty와 C 파라미터를 통해 규제를 걸었으며,  
   최적의 하이퍼 파라미터 값을 GridSearchCV를 통해 찾아서 적용시켰기 때문에 모델의 복잡도를 낮추는 방법으로 과적합도 해소했다.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
