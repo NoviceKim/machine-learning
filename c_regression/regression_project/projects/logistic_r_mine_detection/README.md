@@ -2,7 +2,7 @@
 - 이번에 사용한 데이터 세트의 총 데이터(행) 수는 207개
 - 기뢰란, 선박을 파괴할 목적으로 수중에 설치하는 폭탄을 의미  
 
-<img src='../../images/naval_mines.jpg'>
+<img src='../../images/naval_mines.jpg' width='700px'>
 <sub>출처: https://www.defencexp.com/naval-mines-the-biggest-threat-to-indian-waters/</sub>
 
 ---
