@@ -1,7 +1,9 @@
 ### 주제: 로지스틱 회귀를 통해 잠수함 레이더 수치로 기뢰를 탐지하는 분류 모델 학습
 - 이번에 사용한 데이터 세트의 총 데이터(행) 수는 207개
 - 기뢰란, 선박을 파괴할 목적으로 수중에 설치하는 폭탄을 의미  
-  
+
+<img src='../../images/naval_mines.jpg'>
+
 ---
   
 #### Features
@@ -484,6 +486,7 @@ recall_prediction = binarizer.fit_transform(lgr.predict_proba(X_test)[:, 1].resh
 <img src='../../images/log_r13.png'>
 
 ---
+  
 #### 학습 결과
 - 임계치를 낮춘 결과, 목표였던 0.8 이상의 재현율을 가진 로지스틱 회귀 모델을 얻을 수 있었다.
 
