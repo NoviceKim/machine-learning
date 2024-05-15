@@ -395,6 +395,28 @@ over_X_train, over_y_train = smote.fit_resample(X_train, y_train)
 feature들의 값이 모두 0 ~ 1 범위로 MinMaxScaler가 적용되어있었기 때문에, StandardScaler는 이 과정에서 사용하지 않음
 
 ```
+from sklearn.model_selection import GridSearchCV
+from sklearn.pipeline import Pipeline
+from sklearn.linear_model import LogisticRegression
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+
+# 로지스틱 회귀 모델 객체 선언
+lgr = LogisticRegression(random_state=124)
+
+
+# 교차 검증에 사용할 하이퍼 파라미터
+parameters = {'lgr__solver': ['liblinear', 'saga'],
+              'lgr__penalty': ['l1', 'l2'],
+              'lgr__C': [0.5, 0.1, 0.05, 0.01, 0.005, 0.001]}
+
+
+# LDA와 LogisticRegression을 거치는 파이프라인 구축
+lgr_pipe = Pipeline([("lda", LinearDiscriminantAnalysis(n_components=1)),
+                     ('lgr', lgr)])
+
+# 위의 파이프라인으로 훈련 데이터 교차 검증
+g_lgr = GridSearchCV(lgr_pipe, param_grid=parameters, cv=3, scoring='accuracy')
+g_lgr.fit(over_X_train, over_y_train)
 ```
 
 위 코드로 교차 검증 후 각 하이퍼 파라미터 조합 별 모델의 평가 순위를 출력해본 결과,  
