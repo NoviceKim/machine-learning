@@ -1,5 +1,8 @@
 ### 주제: 비선형 회귀를 통한 콘크리트 강도 예측 모델 학습
 
+<img src='../../images/concrete.jpg' width='700px'>
+<sub>출처: https://www.nrmca.org/about-nrmca/about-concrete/</sub>
+
 #### Features
 - Cement: 시멘트 함유량
 - Blast Furnace Slag: 용광로 내에서의 광재(광석 제련 후 남는 재)의 양
