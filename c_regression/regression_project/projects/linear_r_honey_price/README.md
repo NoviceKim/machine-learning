@@ -7,7 +7,7 @@
 
 #### Features (총 10종)
 - CS: 색깔 (Color Score)
-> - 점수가 낮을수록 밝은 색, 높을 수록 어두운 색을 띄는 꿀
+> - 점수가 낮을수록 밝은 색, 높을수록 어두운 색을 띄는 꿀
 
 - Density: 밀도
 - WC: 수분 함유량 (Water Content)
