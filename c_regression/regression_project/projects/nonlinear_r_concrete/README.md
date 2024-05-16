@@ -32,8 +32,7 @@
 
 <img src='../../images/nlr02.png'>
 
-feature 사이의 상관관계를 시각화 한 결과,  
-일부 feature 사이에 높은 음의 상관관계를 확인
+feature 사이의 상관관계를 시각화 한 결과, 일부 feature 사이에 높은 음의 상관관계를 확인
 
 <img src='../../images/nlr03.png'>
 
