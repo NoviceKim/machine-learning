@@ -338,9 +338,9 @@ low_columns
 이전 사이클과 동일한 과정을 거쳐서  
 train과 test 데이터를 예측한 결과는 다음과 같음
 
-<img src='../../images/dr18.png'>
-
 <img src='../../images/dr19.png'>
+
+<img src='../../images/dr20.png'>
 
 
 #### 2nd Cycle - 선형 회귀 결과
