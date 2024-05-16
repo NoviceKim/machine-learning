@@ -167,7 +167,7 @@ X_test = torch.FloatTensor(pca_test_df.iloc[:, :-1].values)
 y_test = torch.FloatTensor(pca_test_df.target.values).view(-1, 1)
 ```
   
-그 다음 Sequential로 Linear → Sigmoid 순서를 거치는 Pytorch 모델 생성,
+그 다음 Sequential로 Linear → Sigmoid 순서를 거치는 Pytorch 모델 생성,  
 학습을 200,000번 반복하며 10,000번마다 W(비중)와 b(편향), loss를 출력  
 
 ```
