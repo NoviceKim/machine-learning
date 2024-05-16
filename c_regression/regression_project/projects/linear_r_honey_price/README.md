@@ -1,5 +1,7 @@
 ### 주제: 선형 회귀 모델을 통한 꿀 가격 예측 모델 학습
 
+<img src='../../images/honey.png'>
+<sub>출처: https://www.harniva.com/about-honey</sub>
 ---
 
 #### Features (총 10종)
