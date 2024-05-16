@@ -66,7 +66,7 @@
 
 <img src='../../images/dr01.png'>
 
-그래프가 한쪽으로 쏠려있었기 때문에, describe()로 수치 데이터를 확인
+그래프가 한쪽으로 쏠려있었기 때문에, describe()로 사분위수를 확인
 
 <img src='../../images/dr02.png'>
 
