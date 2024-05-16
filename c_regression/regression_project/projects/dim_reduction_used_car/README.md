@@ -2,6 +2,7 @@
 - CarDekho는 인도의 중고차 관련 웹 사이트
 
 <img src='../../images/cardekho.png' width='700px'>
+<sub>출처: https://www.cardekho.com/</sub>
 
 ---
 
