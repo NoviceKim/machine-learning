@@ -27,12 +27,12 @@
 
 결측치 여부를 확인해봤지만, 이번 데이터 세트에서는 발견되지 않음
 
-각 컬럼의 데이터 분포를 출력해본 결과는 아래와 같았으며,
+각 컬럼의 데이터 분포를 출력해본 결과는 아래와 같았으며,  
 타겟인 Strength의 데이터 분포는 첨도가 높지 않았기 때문에, 로그는 취하지 않기로 결정
 
 <img src='../../images/nlr02.png'>
 
-feature 사이의 상관관계를 시각화 한 결과,
+feature 사이의 상관관계를 시각화 한 결과,  
 일부 feature 사이에 높은 음의 상관관계를 확인
 
 <img src='../../images/nlr03.png'>
@@ -54,7 +54,7 @@ l_r = LinearRegression()
 l_r.fit(X_train, y_train)
 ```
 
-데이터 세트를 분할한 뒤 Sklearn의 LinearRegression으로 학습,
+데이터 세트를 분할한 뒤 Sklearn의 LinearRegression으로 학습,  
 모델의 성능과 과적합 여부를 알아보기 위해 train과 test 데이터를 같은 모델(l_r)로 예측한 결과는 다음과 같음
 
 <img src='../../images/nlr04.png'>
