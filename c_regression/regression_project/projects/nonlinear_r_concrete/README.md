@@ -167,7 +167,7 @@ poly_features = PolynomialFeatures(degree=2).fit_transform(features)
 poly_features
 ```
 
-Sklearn의 PolynomialFeatures로 기존 features를 변현한 poly_features를 생성  
+Sklearn의 PolynomialFeatures로 기존 features를 변환환한 poly_features를 생성  
 
 다만, 차수가 3차 이상으로 늘어나면 오히려 모델 훈련 과정에서 오류가 발생했기 때문에  
 이번 프로젝트에서의 다항 회귀는 2차식으로만 진행
@@ -460,7 +460,7 @@ Cement와 Blast Furnace Slag 사이에 약 -0.3의 음의 상관관계가 발견
 
 
 #### 7th Cycle - 선형 회귀 모델 학습 결과
-- - 이전 사이클에 비해 R2 Score가 상승함
+- 이전 사이클에 비해 R2 Score가 상승함
 
 
 #### Polynomial(다항 회귀) 학습
