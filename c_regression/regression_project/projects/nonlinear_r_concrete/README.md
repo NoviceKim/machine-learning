@@ -479,7 +479,7 @@ Cement와 Blast Furnace Slag 사이에 약 -0.3의 음의 상관관계가 발견
 <img src='../../images/nlr47.png'>
 
 
-#### 6th Cycle - 트리 회귀 모델 학습 결과
+#### 7th Cycle - 트리 회귀 모델 학습 결과
 - 전반적으로 R2가 이전 사이클에 비해 상승함
 - 가장 높은 R2를 보이는 XGB 회귀 모델의 경우, 0.91이라는 매우 우수한 수치가 관측됨
 - 또한, Decision Tree 모델에서 발견괸 과적합 현상이 해소됨
@@ -494,7 +494,7 @@ VIF와 OLS 출력 결과, 이전 사이클과 마찬가지로 특별한 이상�
 ---
 
 ### 최종 학습 결과
-- Cement, Blast Furnace SLag, Superplasticizer, Age의 4개 feature를 가진 데이터 세트를 사용했을 때  
+- Cement, Blast Furnace Slag, Superplasticizer, Age의 4개 feature를 가진 데이터 세트를 사용했을 때  
   가장 신뢰할 수 있으면서도, 전반적으로 0.7 이상의 높은 R2 Score를 기록하는 모델들을 얻을 수 있었다.
   
 - 그 중에서도 XGB 회귀 모델의 경우, R2 Score 0.91로 매우 우수한 결과를 보여주었다.
